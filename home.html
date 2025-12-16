@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZYFNYX AutoLabs | Future Engineering</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+    :root {
+      /* Palette: Bright Slate & Cement with Neon Accents */
+      --bg-deep: #0f172a;
+      --bg-slate: #1e293b;
+      --cement-light: #f1f5f9;
+      --cement-dim: #cbd5e1;
+      
+      /* Neon Accents */
+      --neon-cyan: #06b6d4;
+      --neon-amber: #f59e0b;
+      --neon-purple: #8b5cf6;
+      --neon-lime: #84cc16;
+
+      --text-dark: #0f172a;
+      --text-light: #f8fafc;
+
+      /* Spacing */
+      --spacing-section: 120px;
+
+      /* Extra vars for solutions galaxy */
+      --neo-bg-deep: #020617;
+      --neo-bg-slab: #111827;
+      --neo-bg-slab-soft: #1f2937;
+      --neo-slate-light: #e5e7eb;
+      --neo-slate-soft: #9ca3af;
+      --neo-cement: #d4d4d8;
+      --neo-cyan: #22d3ee;
+      --neo-amber: #facc15;
+      --neo-pink: #fb7185;
+      --neo-violet: #a855f7;
+      --neo-lime: #a3e635;
+      --neo-border-strong: #0f172a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-light);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 25%);
+    }
+
+    /* --- UTILITY: Geometric Background Shapes (global) --- */
+    .bg-shape {
+      position: absolute;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    
+    .bg-shape.shape-circle {
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+      top: -100px;
+      right: -100px;
+    }
+
+    .bg-shape.shape-triangle {
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 200px solid rgba(255,255,255,0.03);
+      top: 40%;
+      left: 5%;
+      transform: rotate(-15deg);
+    }
+
+    /* --- NAVIGATION --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.95),
+        rgba(15,23,42,0.7),
+        transparent
+      );
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cement-light);
+      cursor: pointer;
+    }
+
+    .logo span { color: var(--neon-cyan); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .nav-link {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cement-dim);
+      text-decoration: none;
+      padding-bottom: 4px;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-cyan);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--cement-light);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-links button {
+      background: transparent;
+      border: 1px solid var(--cement-dim);
+      color: var(--cement-light);
+      padding: 0.5rem 1.4rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: 0.3s;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    }
+
+    .nav-links button:hover {
+      background: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+      color: var(--bg-deep);
+      box-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+    /* --- BASE SECTION LAYOUT --- */
+    .section {
+      padding: 6rem 5%;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title-bar span.line {
+      width: 40px;
+      height: 3px;
+      background: var(--cement-light);
+    }
+
+    .section-title-bar span.label {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--cement-dim);
+    }
+
+    .section-heading {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-lead {
+      font-size: 0.98rem;
+      color: var(--cement-dim);
+      max-width: 40rem;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10%;
+      padding-top: 140px; /* to clear fixed nav */
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 5rem;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--cement-light);
+    }
+
+    h1 .filled {
+      color: var(--cement-light);
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--cement-dim);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      border-left: 2px solid var(--neon-cyan);
+      padding-left: 1rem;
+    }
+
+    .animate-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.9s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- ABOUT SECTION --- */
+    .about-section {
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), #020617 60%);
+      border-top: 1px solid rgba(148,163,184,0.15);
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      margin-top: 1.8rem;
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .about-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--cement-dim);
+    }
+
+    .about-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--cement-dim);
+    }
+
+    .about-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .about-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--neon-cyan);
+      font-size: 0.8rem;
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .about-metric-card {
+      border-radius: 0;
+      border: 1px solid rgba(30,64,175,0.9);
+      background: rgba(15,23,42,0.9);
+      padding: 0.7rem 0.8rem;
+      color: var(--cement-dim);
+    }
+
+    .about-metric-card strong {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--cement-light);
+      margin-bottom: 0.15rem;
+    }
+
+    /* --- ORIGINAL CARD SYSTEM (kept for future use) --- */
+    .card {
+      background: var(--cement-light);
+      color: var(--text-dark);
+      min-height: 400px;
+      position: relative;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      clip-path: polygon(
+        20px 0, 100% 0, 
+        100% calc(100% - 30px), 
+        calc(100% - 30px) 100%, 
+        0 100%, 0 20px
+      );
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .card-meta {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--bg-deep);
+      color: var(--cement-light);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      clip-path: polygon(5px 0, 100% 0, 100% 100%, 0 100%, 0 5px);
+    }
+
+    /* --- FUTURISTIC MULTI-SHAPE SOLUTIONS LAYOUT --- */
+    .solutions-orbit {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(148, 163, 184, 0.35), transparent 55%),
+        radial-gradient(circle at 90% 110%, rgba(64, 196, 255, 0.32), transparent 55%),
+        linear-gradient(135deg, #020617, #020617 40%, #030712 100%);
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .solutions-orbit::before,
+    .solutions-orbit::after {
+      content: "";
+      position: absolute;
+      inset: -80px -40px auto;
+      background-image:
+        radial-gradient(circle at 20% 40%, rgba(148, 163, 184, 0.18), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .solutions-header-main {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .solutions-header-main .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--neo-amber);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .solutions-header-main h2 {
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      margin-bottom: 8px;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neo-slate-light);
+    }
+
+    .solutions-header-main .section-subtitle {
+      max-width: 40rem;
+      font-size: 0.9rem;
+      color: var(--neo-slate-soft);
+    }
+
+    .solutions-header-main .solutions-tagline-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--neo-slate-soft);
+    }
+
+    .solutions-chip {
+      padding: 4px 10px;
+      border-radius: 0;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .suite-section {
+      position: relative;
+      margin-bottom: 42px;
+      padding: 26px 22px 24px;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .suite-ais {
+      background: linear-gradient(120deg, #020617 0%, #0f172a 45%, #1f2937 100%);
+      border-image: linear-gradient(90deg, var(--neo-cyan), var(--neo-slate-soft)) 1;
+    }
+
+    .suite-adas {
+      background: linear-gradient(120deg, #020617 0%, #111827 40%, #4c1d95 100%);
+      border-image: linear-gradient(90deg, var(--neo-violet), var(--neo-amber)) 1;
+    }
+
+    .suite-cockpit {
+      background: linear-gradient(120deg, #020617 0%, #1e293b 45%, #0f766e 100%);
+      border-image: linear-gradient(90deg, var(--neo-lime), var(--neo-cyan)) 1;
+    }
+
+    .suite-data {
+      background: linear-gradient(120deg, #020617 0%, #111827 40%, #7c2d12 100%);
+      border-image: linear-gradient(90deg, var(--neo-amber), var(--neo-pink)) 1;
+    }
+
+    .suite-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 2.3fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .suite-visual {
+      position: relative;
+      min-height: 190px;
+      border-radius: 0;
+      background: radial-gradient(circle at 15% 10%, rgba(226, 232, 240, 0.9), transparent 55%),
+                  radial-gradient(circle at 80% 85%, rgba(148, 163, 184, 0.7), transparent 60%),
+                  linear-gradient(145deg, #020617, #020617 38%, #020617 100%);
+      border: 1px solid rgba(15, 23, 42, 0.85);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .suite-visual-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(15, 23, 42, 0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.7) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mix-blend-mode: soft-light;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .suite-visual-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    .suite-orbit-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #020617;
+      background: rgba(248, 250, 252, 0.92);
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 0;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.5);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .suite-orbit-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 2px solid #020617;
+      background: radial-gradient(circle at 30% 30%, #60a5fa, #0ea5e9 40%, #0369a1 100%);
+    }
+
+    .suite-metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      max-width: 260px;
+    }
+
+    .suite-metric {
+      flex: 1 1 46%;
+      min-width: 100px;
+      padding: 6px 8px;
+      border-radius: 0;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(15, 23, 42, 0.95);
+      font-size: 0.7rem;
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-metric span {
+      display: block;
+    }
+
+    .suite-metric span.value {
+      font-weight: 600;
+      color: var(--neo-slate-light);
+      font-size: 0.86rem;
+    }
+
+    /* Geometric shapes inside suites (namespaced) */
+    .suite-shape-circle,
+    .suite-shape-rect,
+    .suite-shape-triangle,
+    .suite-shape-arc {
+      position: absolute;
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      transition: transform 0.5s ease-out, filter 0.5s ease-out;
+    }
+
+    .suite-shape-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at 30% 30%, var(--neo-cyan), transparent 60%);
+      top: 12%;
+      right: -18px;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.7);
+    }
+
+    .suite-shape-rect {
+      width: 110px;
+      height: 34px;
+      border-radius: 0;
+      background: linear-gradient(90deg, var(--neo-cement), #a5b4fc);
+      bottom: 16%;
+      left: -22px;
+      box-shadow: 0 0 40px rgba(148, 163, 184, 0.8);
+      transform: skewX(-12deg);
+    }
+
+    .suite-shape-triangle {
+      width: 0;
+      height: 0;
+      border-left: 34px solid transparent;
+      border-right: 34px solid transparent;
+      border-bottom: 64px solid #f97316;
+      right: 18%;
+      bottom: -14px;
+      filter: drop-shadow(0 0 26px rgba(248, 250, 252, 0.7));
+    }
+
+    .suite-shape-arc {
+      width: 140px;
+      height: 140px;
+      border-radius: 100px 100px 0 0;
+      border: 3px solid rgba(15, 23, 42, 0.7);
+      border-bottom: none;
+      left: 55%;
+      top: 40%;
+      transform-origin: center bottom;
+      transform: rotate(-22deg);
+      background: linear-gradient(145deg, transparent 40%, rgba(148, 163, 184, 0.5), transparent 100%);
+    }
+
+    .suite-section:hover .suite-shape-circle {
+      transform: translate(-4px, 4px) scale(1.05);
+      filter: drop-shadow(0 0 36px rgba(56, 189, 248, 0.9));
+    }
+
+    .suite-section:hover .suite-shape-rect {
+      transform: translate(10px, -4px) skewX(-16deg);
+    }
+
+    .suite-section:hover .suite-shape-triangle {
+      transform: translateY(-6px);
+    }
+
+    .suite-section:hover .suite-shape-arc {
+      transform: rotate(-12deg) translateY(-4px);
+    }
+
+    .suite-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .suite-kicker-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--neo-slate-soft);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .suite-kicker-label {
+      padding: 4px 8px;
+      border-radius: 0;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+    }
+
+    .suite-kicker-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .suite-tag {
+      padding: 3px 8px;
+      border-radius: 0;
+      font-size: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-heading {
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 2px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neo-slate-light);
+    }
+
+    .suite-heading span.index {
+      font-size: 0.86rem;
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-desc {
+      font-size: 0.84rem;
+      color: var(--neo-slate-light);
+      max-width: 40rem;
+    }
+
+    .suite-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.5fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .suite-list {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-list li {
+      margin-bottom: 5px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .suite-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 8px;
+      height: 2px;
+      background: var(--neo-cement);
+      transform: skewX(-24deg);
+    }
+
+    .suite-micro-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 0.75rem;
+    }
+
+    .suite-micro-card {
+      padding: 6px 8px;
+      border-radius: 0;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-micro-card strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--neo-slate-light);
+      margin-bottom: 1px;
+    }
+
+    .suite-footer-row {
+      margin-top: 10px;
+      font-size: 0.74rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--neo-slate-soft);
+    }
+
+    .suite-footer-row a {
+      text-decoration: none;
+      border-bottom: 1px dotted var(--neo-slate-light);
+      padding-bottom: 1px;
+      font-size: 0.72rem;
+      color: var(--neo-cyan);
+    }
+
+    /* --- TECHNOLOGIES SECTION --- */
+    .tech-section {
+      background: radial-gradient(circle at center, #020617 0%, #020617 55%, #020617 100%);
+      border-top: 1px solid rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .tech-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .tech-card {
+      border-radius: 0;
+      border: 1px solid rgba(30,64,175,0.9);
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), #020617);
+      padding: 0.9rem 1rem;
+      font-size: 0.8rem;
+      color: var(--cement-dim);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.8);
+    }
+
+    .tech-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cement-light);
+    }
+
+    .tech-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+    }
+
+    .tech-tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      padding: 0.1rem 0.4rem;
+      font-size: 0.7rem;
+      color: var(--cement-dim);
+    }
+
+    /* --- TESTIMONIALS SECTION --- */
+    .testimonials-section {
+      background: radial-gradient(circle at bottom, rgba(15,23,42,0.9), #020617 60%);
+    }
+
+    .testimonial-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      border-radius: 0;
+      border: 1px solid rgba(148,163,184,0.3);
+      background: rgba(15,23,42,0.95);
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      box-shadow: 0 16px 32px rgba(15,23,42,0.9);
+    }
+
+    .testimonial-card::before {
+      content: "“";
+      position: absolute;
+      top: -20px;
+      left: 16px;
+      font-size: 3rem;
+      color: rgba(148,163,184,0.15);
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--cement-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cement-light);
+    }
+
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--cement-dim);
+    }
+
+    /* --- JOIN US / CAREERS SECTION --- */
+    .careers-section {
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617 70%);
+      border-top: 1px solid rgba(30,64,175,0.8);
+      border-bottom: 1px solid rgba(30,64,175,0.8);
+    }
+
+    .careers-intro {
+      margin-top: 0.5rem;
+      max-width: 42rem;
+      font-size: 0.95rem;
+      color: var(--cement-dim);
+    }
+
+    .career-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .career-card {
+      border-radius: 0;
+      border: 1px solid rgba(56,189,248,0.3);
+      background: linear-gradient(135deg, rgba(15,23,42,0.98), #020617);
+      padding: 1.5rem 1.6rem;
+      box-shadow: 0 16px 36px rgba(15,23,42,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .career-card::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      border: 2px solid rgba(56,189,248,0.3);
+      opacity: 0.4;
+    }
+
+    .career-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cement-light);
+    }
+
+    .career-tagline {
+      font-size: 0.85rem;
+      color: var(--cement-dim);
+    }
+
+    .career-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+      font-size: 0.78rem;
+      color: var(--cement-dim);
+    }
+
+    .career-meta-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 0.2rem 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+    }
+
+    .career-subtitle {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--cement-dim);
+      margin-top: 0.6rem;
+    }
+
+    .career-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--cement-dim);
+      margin-top: 0.2rem;
+    }
+
+    .career-list li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .career-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.8rem;
+      color: var(--neon-cyan);
+    }
+
+    .career-footer-note {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--cement-dim);
+      border-top: 1px dashed rgba(148,163,184,0.4);
+      padding-top: 0.6rem;
+    }
+
+    .career-footer-note strong {
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    /* --- CONTACT SECTION --- */
+    .contact-section {
+      background: linear-gradient(120deg, #020617, #0f172a);
+      border-top: 1px solid rgba(30,64,175,0.8);
+      border-bottom: 1px solid rgba(30,64,175,0.8);
+    }
+
+    .contact-band {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.6rem 1.8rem;
+      border-radius: 0;
+      border: 1px solid rgba(56,189,248,0.4);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.16), rgba(15,23,42,0.9));
+      box-shadow: 0 18px 36px rgba(15,23,42,0.9);
+    }
+
+    .contact-text-main {
+      font-size: 1rem;
+      color: var(--cement-light);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-text-sub {
+      font-size: 0.9rem;
+      color: var(--cement-dim);
+      max-width: 32rem;
+    }
+
+    .contact-email {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+    }
+
+    /* --- STATS SECTION (Spacious) --- */
+    .stats-bar {
+      margin: var(--spacing-section) 0;
+      display: flex;
+      justify-content: space-around;
+      background: rgba(255,255,255,0.03);
+      padding: 4rem 0;
+      clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      color: var(--neon-lime);
+      display: block;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      color: var(--cement-dim);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 3.5rem 5% 2rem;
+      background: #020617;
+      border-top: 1px solid var(--bg-slate);
+      font-size: 0.9rem;
+      color: var(--cement-dim);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 2rem;
+    }
+
+    .footer-title {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.7rem;
+      color: var(--cement-light);
+    }
+
+    .footer-brand-line {
+      font-size: 0.9rem;
+      color: var(--cement-dim);
+    }
+
+    .footer-links {
+      list-style: none;
+      font-size: 0.85rem;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-links a {
+      color: var(--cement-dim);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--neon-cyan);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(148,163,184,0.2);
+      padding-top: 0.8rem;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--cement-dim);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      h1 { font-size: 3.4rem; }
+
+      .hero {
+        padding: 150px 5% 80px;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .suite-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .suite-section {
+        padding-inline: 16px;
+      }
+
+      .suite-visual {
+        min-height: 180px;
+      }
+
+      .footer-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .career-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 3rem; }
+
+      .suite-columns {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .suite-micro-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stats-bar {
+        flex-direction: column;
+        gap: 2rem;
+        clip-path: none;
+        padding-inline: 5%;
+      }
+
+      nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .nav-links button {
+        display: none; /* keep menu clean on mobile */
+      }
+
+      .contact-band {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global background shapes -->
+  <div class="bg-shape shape-circle"></div>
+  <div class="bg-shape shape-triangle"></div>
+
+  <!-- TOP NAVBAR -->
+  <nav>
+    <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      ZYFNYX<span>.Auto</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#solutions" class="nav-link">Solutions</a>
+      <a href="#technologies" class="nav-link">Technologies</a>
+      <a href="#testimonials" class="nav-link">Testimonials</a>
+      <a href="#joinus" class="nav-link">Join us</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">
+        Initialize System
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="animate-in">
+        <span class="outline">Future</span><br>
+        <span class="filled">Automotive</span><br>
+        <span class="outline">Experience</span>
+      </h1>
+      <p>
+        Advanced Driver-Assistance Systems • E&E Architecture • Next-Gen Infotainment.
+        Bridging the gap between raw data and human experience.
+      </p>
+    </div>
+    
+    <div style="position: absolute; right: 10%; top: 30%; width: 300px; height: 300px; border: 2px solid var(--neon-cyan); transform: rotate(45deg); opacity: 0.2;"></div>
+    <div style="position: absolute; right: 15%; top: 40%; width: 200px; height: 200px; border: 2px solid var(--neon-purple); transform: rotate(15deg); opacity: 0.2;"></div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" class="section about-section">
+    <div class="section-inner">
+      <div class="section-title-bar">
+        <span class="line"></span>
+        <span class="label">About ZYFNYX AutoLabs</span>
+      </div>
+      <h2 class="section-heading">A focused lab for digital automotive engineering</h2>
+      <p class="section-lead">
+        ZYFNYX AutoLabs works at the intersection of ADAS, E&amp;E architecture, digital cockpits
+        and EV analytics – turning messy data, standards and requirements into clear tools and
+        proof-of-concepts that OEM and Tier-1 teams can use from day one.
+      </p>
+
+      <div class="about-grid">
+        <div>
+          <div class="about-pill-row">
+            <div class="about-pill">Benchmarking &amp; spec definition</div>
+            <div class="about-pill">PoC design &amp; V-cycle view</div>
+            <div class="about-pill">India-first, global-ready</div>
+          </div>
+          <ul class="about-list" style="margin-top:1.4rem;">
+            <li>Deep experience across sub-4m SUVs, crossovers, EV platforms and digital cockpits.</li>
+            <li>Hands-on with E&amp;E feature maps, ECU lists, network diagrams and diagnostics flows.</li>
+            <li>Comfortable with AIS, Bharat NCAP, ISO, UN R and OEM-internal standards &amp; checklists.</li>
+            <li>Deliverables that double as management stories and engineering workbenches – HTML portals,
+                JSON libraries, Excel packs and print-ready decks.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="about-metrics">
+            <div class="about-metric-card">
+              <strong>Segments</strong>
+              Sub-4m SUV, compact crossover, EV &amp; SDV programmes.
+            </div>
+            <div class="about-metric-card">
+              <strong>Domains</strong>
+              ADAS, E&amp;E, HMI, OTA, EV battery &amp; motor analytics.
+            </div>
+            <div class="about-metric-card">
+              <strong>Engagements</strong>
+              Benchmarking, PoC scoping, tool-building, compliance prep.
+            </div>
+          </div>
+          <div class="about-metric-card" style="margin-top:1rem;">
+            <strong>Working style</strong>
+            Short, focused sprints with clear artefacts: requirement sets, scoring models, portals and
+            demoable journeys that can plug into your existing governance and supplier ecosystem.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS – Futuristic Multi-Shape Layout -->
+  <section id="solutions" class="section solutions-orbit">
+    <div class="section-inner">
+      <div class="solutions-header-main">
+        <div class="section-eyebrow">AI solution galaxy</div>
+        <h2 class="section-title">A universe of automotive AI platforms</h2>
+        <p class="section-subtitle">
+          Each band below is a dedicated “orbit” around one theme – AIS &amp; compliance,
+          ADAS, digital cockpits and data / EV / E&amp;E analytics – with sharp-edge,
+          geometric layouts to mirror the way we think about systems.
+        </p>
+        <div class="solutions-tagline-row">
+          <div class="solutions-chip">AIS / Bharat NCAP / UN R aware</div>
+          <div class="solutions-chip">Logs • Specs • Standards • Tests</div>
+          <div class="solutions-chip">Bright slate &amp; cement design language</div>
+        </div>
+      </div>
+
+      <!-- Suite 01 – AIS & Compliance AI Copilot -->
+      <section class="suite-section suite-ais">
+        <div class="suite-layout">
+          <!-- Left: shapes & quick metrics -->
+          <div class="suite-visual">
+            <div class="suite-visual-grid"></div>
+            <div class="suite-visual-inner">
+              <div>
+                <div class="suite-orbit-title">
+                  <span class="suite-orbit-dot"></span>
+                  AIS &amp; COMPLIANCE ORBIT
+                </div>
+                <div class="suite-metrics-row">
+                  <div class="suite-metric">
+                    <span>Standards mapped</span>
+                    <span class="value">AIS / BNVSAP / UN R / ISO</span>
+                  </div>
+                  <div class="suite-metric">
+                    <span>Focus zones</span>
+                    <span class="value">Safety • OTA • Cyber</span>
+                  </div>
+                </div>
+              </div>
+              <div class="suite-metrics-row">
+                <div class="suite-metric">
+                  <span>Signal depth</span>
+                  <span class="value">Log → Clause trace</span>
+                </div>
+                <div class="suite-metric">
+                  <span>Best suited for</span>
+                  <span class="value">Homologation teams</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Geometric shapes -->
+            <div class="suite-shape-circle"></div>
+            <div class="suite-shape-rect"></div>
+            <div class="suite-shape-triangle"></div>
+            <div class="suite-shape-arc"></div>
+          </div>
+
+          <!-- Right: text & structure -->
+          <div class="suite-content">
+            <div class="suite-kicker-row">
+              <div class="suite-kicker-label">Suite 01 • AIS &amp; Compliance AI Copilot</div>
+              <div class="suite-kicker-tags">
+                <span class="suite-tag">AIS-140 / 145 / 156 / 189 / 190 / 197</span>
+                <span class="suite-tag">Regulations → Systems → Tests → Logs</span>
+              </div>
+            </div>
+
+            <div class="suite-heading">
+              <span>Turn thick AIS books into a live AI assistant.</span>
+              <span class="index">01</span>
+            </div>
+
+            <p class="suite-desc">
+              An AI copilot that understands AIS, Bharat NCAP and global regulations –
+              and helps engineers map clauses into concrete ECU behaviours, test cases
+              and log-level checks.
+            </p>
+
+            <div class="suite-columns">
+              <ul class="suite-list">
+                <li>
+                  <strong>Automotive Universal Log Analysis</strong> – upload logs from ADAS,
+                  telematics or E&amp;E ECUs and auto-check against compliance patterns.
+                </li>
+                <li>
+                  <strong>Compliance Test Suite for E&amp;E Systems</strong> – AIS-145 / AIS-037 /
+                  tell-tales, warnings, diagnostics mapped to structured test lists.
+                </li>
+                <li>
+                  <strong>FOTA &amp; OTA Test Suite</strong> – SUMS / AIS-190-aware test flows for
+                  update integrity, rollback, audit and security posture.
+                </li>
+                <li>
+                  <strong>Wireless Test Suite for Digital Cockpits</strong> – Wi-Fi / BT / projection
+                  stability &amp; latency KPIs for AA / CP and connected IVI.
+                </li>
+                <li>
+                  AI-generated <strong>traceability matrices &amp; gap lists</strong> from AIS / UN R /
+                  ISO text into your spec, ECU list and test catalogue.
+                </li>
+              </ul>
+
+              <div class="suite-micro-grid">
+                <div class="suite-micro-card">
+                  <strong>Primary users</strong>
+                  Homologation, quality, E&amp;E architects, compliance owners.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Inputs</strong>
+                  PDF / HTML standards, ECU list, network map, existing test cases, logs.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Outputs</strong>
+                  Clause maps, test libraries, log rules, dashboards, exportable Excel/PDF.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Bonus</strong>
+                  Ready for AIS, Bharat NCAP and future UN R roll-ins.
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-footer-row">
+              <span><strong>Ideal for:</strong> AIS &amp; Bharat NCAP readiness reviews, cyber/OTA audits, type approval prep.</span>
+              <a href="#contact">Discuss an AIS use-case</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Suite 02 – ADAS Benchmarking & Algorithm AI Lab -->
+      <section class="suite-section suite-adas">
+        <div class="suite-layout">
+          <div class="suite-visual">
+            <div class="suite-visual-grid"></div>
+            <div class="suite-visual-inner">
+              <div>
+                <div class="suite-orbit-title">
+                  <span class="suite-orbit-dot"></span>
+                  ADAS ORBIT – SCENARIOS &amp; LOGS
+                </div>
+                <div class="suite-metrics-row">
+                  <div class="suite-metric">
+                    <span>Coverage</span>
+                    <span class="value">NCAP • CDAS • AIS</span>
+                  </div>
+                  <div class="suite-metric">
+                    <span>Signals</span>
+                    <span class="value">Camera • Radar • Fusion</span>
+                  </div>
+                </div>
+              </div>
+              <div class="suite-metrics-row">
+                <div class="suite-metric">
+                  <span>Focus</span>
+                  <span class="value">Feature gaps &amp; KPIs</span>
+                </div>
+                <div class="suite-metric">
+                  <span>Mode</span>
+                  <span class="value">BM + Algorithm ideas</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-shape-circle"></div>
+            <div class="suite-shape-rect"></div>
+            <div class="suite-shape-triangle"></div>
+            <div class="suite-shape-arc"></div>
+          </div>
+
+          <div class="suite-content">
+            <div class="suite-kicker-row">
+              <div class="suite-kicker-label">Suite 02 • ADAS Benchmarking &amp; Algorithm AI Lab</div>
+              <div class="suite-kicker-tags">
+                <span class="suite-tag">Levels 1–2+</span>
+                <span class="suite-tag">BM • Scenarios • Algorithms</span>
+              </div>
+            </div>
+
+            <div class="suite-heading">
+              <span>Let AI watch the logs while you design the next feature.</span>
+              <span class="index">02</span>
+            </div>
+
+            <p class="suite-desc">
+              A suite that benchmarks ADAS feature sets, analyses driving logs, and uses AI
+              to propose algorithm blocks and scenario coverage improvements.
+            </p>
+
+            <div class="suite-columns">
+              <ul class="suite-list">
+                <li>
+                  <strong>ADAS BM &amp; Compliance AI Tool</strong> – compare your lane, AEB, ACC,
+                  TSR envelope vs global benchmarks and regulatory envelopes.
+                </li>
+                <li>
+                  <strong>ADAS Algorithms AI Generator</strong> – generates pseudo-code, block
+                  diagrams and parameter “starting sets” from requirement text.
+                </li>
+                <li>
+                  <strong>Scenario Coverage Analytics</strong> – map logs to NCAP / CDAS
+                  scenario catalogues, highlight missing and under-tested regions.
+                </li>
+                <li>
+                  <strong>Event &amp; Corner-case Hunter</strong> – detect rare, risky or confusing
+                  events in billions of log points using AI-based clustering.
+                </li>
+              </ul>
+
+              <div class="suite-micro-grid">
+                <div class="suite-micro-card">
+                  <strong>Primary users</strong>
+                  ADAS feature owners, safety teams, calibration engineers.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Inputs</strong>
+                  Feature list, logs, scenario sets, NCAP / AIS requirement sets.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Outputs</strong>
+                  Heatmaps, gap lists, algorithm sketches, scenario roadmaps.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Extra</strong>
+                  Hooks for future combined driving assistance (CDAS) standards.
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-footer-row">
+              <span><strong>Ideal for:</strong> ADAS roadmap planning, NCAP scoring and calibration campaigns.</span>
+              <a href="#contact">Share an ADAS log sample</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Suite 03 – Android Cockpit & HMI AI Studio -->
+      <section class="suite-section suite-cockpit">
+        <div class="suite-layout">
+          <div class="suite-visual">
+            <div class="suite-visual-grid"></div>
+            <div class="suite-visual-inner">
+              <div>
+                <div class="suite-orbit-title">
+                  <span class="suite-orbit-dot"></span>
+                  COCKPIT &amp; HMI ORBIT
+                </div>
+                <div class="suite-metrics-row">
+                  <div class="suite-metric">
+                    <span>Platforms</span>
+                    <span class="value">Android / AA / CP</span>
+                  </div>
+                  <div class="suite-metric">
+                    <span>Views</span>
+                    <span class="value">IVI • Cluster • Controllers</span>
+                  </div>
+                </div>
+              </div>
+              <div class="suite-metrics-row">
+                <div class="suite-metric">
+                  <span>Focus</span>
+                  <span class="value">UX + Stability</span>
+                </div>
+                <div class="suite-metric">
+                  <span>Extras</span>
+                  <span class="value">Wireless stress tests</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-shape-circle"></div>
+            <div class="suite-shape-rect"></div>
+            <div class="suite-shape-triangle"></div>
+            <div class="suite-shape-arc"></div>
+          </div>
+
+          <div class="suite-content">
+            <div class="suite-kicker-row">
+              <div class="suite-kicker-label">Suite 03 • Android Cockpit &amp; HMI AI Studio</div>
+              <div class="suite-kicker-tags">
+                <span class="suite-tag">Digital cockpit</span>
+                <span class="suite-tag">HMI &amp; connectivity</span>
+              </div>
+            </div>
+
+            <div class="suite-heading">
+              <span>Design, test and tune cockpits with an AI co-driver.</span>
+              <span class="index">03</span>
+            </div>
+
+            <p class="suite-desc">
+              A design-plus-test environment for Android cockpits and companion apps –
+              with AI reviewing flows, wording, timing and wireless behaviour.
+            </p>
+
+            <div class="suite-columns">
+              <ul class="suite-list">
+                <li>
+                  <strong>Android Cockpit Digital Test Suite</strong> – scripted &amp; AI-generated
+                  test flows for IVI apps, performance, ANR/CR and resource usage.
+                </li>
+                <li>
+                  <strong>AA &amp; CP AI Consultant</strong> – checks your integration against
+                  Google / Apple guidelines and OEM UX rules.
+                </li>
+                <li>
+                  <strong>HMI Companion for Android Apps &amp; Cockpit HMI Controllers</strong> –
+                  reviews flows, icons, wording, latencies, and steer/knob interactions.
+                </li>
+                <li>
+                  <strong>Wireless Test Suite for Digital Cockpits</strong> – stress tests for
+                  phone projection, hotspot, media and call handling over Wi-Fi / BT.
+                </li>
+              </ul>
+
+              <div class="suite-micro-grid">
+                <div class="suite-micro-card">
+                  <strong>Primary users</strong>
+                  HMI designers, IVI engineers, SDV platform teams.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Inputs</strong>
+                  App builds, UX flows, logs, performance traces, UX guidelines.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Outputs</strong>
+                  UX review packs, stability dashboards, wireless reliability reports.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Bonus</strong>
+                  Can link with Panic Mode / SOS PoC concepts for end-to-end journeys.
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-footer-row">
+              <span><strong>Ideal for:</strong> Android cockpit programmes, SDV dashboards, partner app certification.</span>
+              <a href="#contact">Show me your cockpit stack</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Suite 04 – Data, EV & E&E Analytics Fabric -->
+      <section class="suite-section suite-data">
+        <div class="suite-layout">
+          <div class="suite-visual">
+            <div class="suite-visual-grid"></div>
+            <div class="suite-visual-inner">
+              <div>
+                <div class="suite-orbit-title">
+                  <span class="suite-orbit-dot"></span>
+                  DATA / EV / E&amp;E ORBIT
+                </div>
+                <div class="suite-metrics-row">
+                  <div class="suite-metric">
+                    <span>Zones</span>
+                    <span class="value">Battery • Motor • E&amp;E</span>
+                  </div>
+                  <div class="suite-metric">
+                    <span>Signals</span>
+                    <span class="value">Fleet • Lab • Test</span>
+                  </div>
+                </div>
+              </div>
+              <div class="suite-metrics-row">
+                <div class="suite-metric">
+                  <span>Focus</span>
+                  <span class="value">Predict • Optimize</span>
+                </div>
+                <div class="suite-metric">
+                  <span>Extras</span>
+                  <span class="value">VAVE &amp; BM layers</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-shape-circle"></div>
+            <div class="suite-shape-rect"></div>
+            <div class="suite-shape-triangle"></div>
+            <div class="suite-shape-arc"></div>
+          </div>
+
+          <div class="suite-content">
+            <div class="suite-kicker-row">
+              <div class="suite-kicker-label">Suite 04 • Data, EV &amp; E&amp;E Analytics Fabric</div>
+              <div class="suite-kicker-tags">
+                <span class="suite-tag">Fleet &amp; lab data</span>
+                <span class="suite-tag">Predictive &amp; VAVE</span>
+              </div>
+            </div>
+
+            <div class="suite-heading">
+              <span>One fabric for live data, benchmarking and VAVE decisions.</span>
+              <span class="index">04</span>
+            </div>
+
+            <p class="suite-desc">
+              A data fabric that understands vehicles – batteries, motors, ECUs, networks –
+              and lets AI surface patterns, risks and value-engineering ideas.
+            </p>
+
+            <div class="suite-columns">
+              <ul class="suite-list">
+                <li>
+                  <strong>Data Analytics Platform for Auto</strong> – ingestion, dashboards and AI
+                  insights for ECU, sensor, fleet and test-bench data.
+                </li>
+                <li>
+                  <strong>Predictive Analytics Platform for Auto Components</strong> – failure trend
+                  detection, warranty risk heatmaps, spare planning.
+                </li>
+                <li>
+                  <strong>EV Battery Live Monitor &amp; Analytics</strong> – SoH / SoC tracking,
+                  fast-charge behaviour, abuse detection and warranty curves.
+                </li>
+                <li>
+                  <strong>EV Motor Analytics Platforms</strong> – efficiency maps, thermal stress
+                  signatures and early anomaly alerts.
+                </li>
+                <li>
+                  <strong>E&amp;E Benchmarking Platform</strong> – structured ECU / network / feature
+                  comparisons across competitors and generations.
+                </li>
+                <li>
+                  <strong>E&amp;E VAVE Platform</strong> – AI-assisted cost/value analysis at feature
+                  or ECU level, suggesting consolidation &amp; redesign options.
+                </li>
+              </ul>
+
+              <div class="suite-micro-grid">
+                <div class="suite-micro-card">
+                  <strong>Primary users</strong>
+                  Chief engineers, VAVE teams, fleet &amp; quality leads.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Inputs</strong>
+                  Telemetry, lab data, BOM, cost sheets, benchmark specs.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Outputs</strong>
+                  Dashboards, anomaly alerts, VAVE opportunities, BM scorecards.
+                </div>
+                <div class="suite-micro-card">
+                  <strong>Extra</strong>
+                  Can serve as the data backbone for the other suites.
+                </div>
+              </div>
+            </div>
+
+            <div class="suite-footer-row">
+              <span><strong>Ideal for:</strong> EV platforms, E&amp;E roadmaps, cost &amp; quality steering.</span>
+              <a href="#contact">Explore a data pilot</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGIES -->
+  <section id="technologies" class="section tech-section">
+    <div class="section-inner">
+      <div class="section-title-bar">
+        <span class="line"></span>
+        <span class="label">Technologies &amp; stacks</span>
+      </div>
+      <h2 class="section-heading">What powers ZYFNYX AutoLabs solutions</h2>
+      <p class="section-lead">
+        A mix of classic automotive stacks and modern AI / cloud tooling – chosen so that
+        PoCs are realistic to productionise and easy to integrate into existing OEM ecosystems.
+      </p>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <span class="tech-name">ADAS &amp; perception</span>
+          <span>Sensor fusion, log analytics, scenario mining.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">Camera / Radar</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">C++</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <span class="tech-name">E&amp;E networks</span>
+          <span>ECU maps, diagnostics, trace-based insights.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">CAN / LIN</span>
+            <span class="tech-tag">Ethernet</span>
+            <span class="tech-tag">UDS</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <span class="tech-name">Digital cockpits</span>
+          <span>Android-based IVI and clusters, projection.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">Android Auto</span>
+            <span class="tech-tag">Apple CarPlay</span>
+            <span class="tech-tag">Android Automotive</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <span class="tech-name">EV systems</span>
+          <span>Battery, motor and charging analytics.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">BMS logs</span>
+            <span class="tech-tag">ISO 15118</span>
+            <span class="tech-tag">SoH / SoC</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <span class="tech-name">Cloud &amp; data</span>
+          <span>Data lakes, dashboards, AI pipelines.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">Azure / AWS</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Timeseries</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <span class="tech-name">AI &amp; automation</span>
+          <span>LLM-based copilot flows &amp; test generation.</span>
+          <div class="tech-tag-row">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">LLM APIs</span>
+            <span class="tech-tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section testimonials-section">
+    <div class="section-inner">
+      <div class="section-title-bar">
+        <span class="line"></span>
+        <span class="label">Testimonials</span>
+      </div>
+      <h2 class="section-heading">What stakeholders say</h2>
+      <p class="section-lead">
+        Early feedback from OEM / Tier-1 teams who have seen the style of benchmarking,
+        PoC definition and portal-based storytelling behind ZYFNYX AutoLabs.
+      </p>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            “The E&amp;E benchmarking portal didn’t feel like an external report – it felt like
+            an internal product we could build on. The scoring model and JSON libraries are
+            already feeding into our spec discussions.”
+          </p>
+          <div class="testimonial-author">Chief Engineer – Sub-4m SUV Programme</div>
+          <div class="testimonial-role">Global OEM // Product Planning &amp; E&amp;E</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            “For Panic Mode, the biggest value was not the slide deck – it was the clear
+            list of what’s in scope, what’s out, and how it fits into our existing IVI
+            and telematics roadmap. That de-risked our PoC discussions.”
+          </p>
+          <div class="testimonial-author">Executive – Digital Cockpit &amp; Safety</div>
+          <div class="testimonial-role">OEM Innovation Team</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            “The way ADAS, AIS and NCAP were broken down into scenarios and log checks
+            gave our teams a concrete plan. It’s rare to see regulations, specs and tooling
+            stitched together so cleanly.”
+          </p>
+          <div class="testimonial-author">Head – ADAS &amp; Validation</div>
+          <div class="testimonial-role">Tier-1 Supplier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">L4</span>
+      <span class="stat-label">Autonomy focus</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Sensors mapped</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">10ms</span>
+      <span class="stat-label">Latency target</span>
+    </div>
+  </section>
+
+  <!-- JOIN US / CAREERS -->
+  <section id="joinus" class="section careers-section">
+    <div class="section-inner">
+      <div class="section-title-bar">
+        <span class="line"></span>
+        <span class="label">Join us</span>
+      </div>
+      <h2 class="section-heading">Build the next wave of automotive AI tools</h2>
+      <p class="careers-intro">
+        ZYFNYX AutoLabs is starting as a compact, high-trust engineering cell. We’re looking for
+        hands-on builders who enjoy working close to real vehicle programmes – turning logs,
+        standards and specs into intelligent tools and PoCs that OEM teams actually use.
+      </p>
+
+      <div class="career-grid">
+        <!-- AI Solution Programmer -->
+ <!-- AI Solution Programmer -->
+<article class="career-card">
+  <h3 class="career-title">AI Solution Programmer</h3>
+  <p class="career-tagline">
+    Build AI-powered automotive tools – from log analysers and compliance copilots
+    to cockpit and EV analytics dashboards and interactive web portals.
+  </p>
+  <div class="career-meta-row">
+    <span class="career-meta-pill">Experience: 3–8 years</span>
+    <span class="career-meta-pill">Location: Bengaluru / Hybrid</span>
+    <span class="career-meta-pill">Type: Full-time</span>
+  </div>
+
+  <div>
+    <div class="career-subtitle">You will</div>
+    <ul class="career-list">
+      <li>Design and implement AI-backed tools for ADAS, E&amp;E, cockpit and EV data.</li>
+      <li>Work with logs, specs and AIS / NCAP / ISO standards to build practical copilots.</li>
+      <li>Develop backend services, data pipelines and APIs for analytics &amp; visualisation.</li>
+      <li>
+        Prototype portals and dashboards 
+        (HTML / JS / React / Angular-based) that OEM teams can run locally or on cloud.
+      </li>
+      <li>Collaborate directly with founder / domain experts to translate ideas into code quickly.</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="career-subtitle">You bring</div>
+    <ul class="career-list">
+      <li>Strong Python skills (data processing, APIs, automation; ML experience is a plus).</li>
+      <li>
+        Experience with modern web technologies such as 
+        <strong>React.js</strong> and/or <strong>Angular</strong> 
+        (bonus: Vue, TypeScript) for building interactive UIs.
+      </li>
+      <li>
+        Comfort with REST / JSON APIs and integrating AI backends into web front-ends
+        (dashboards, portals, configuration tools).
+      </li>
+      <li>
+        Good understanding of at least one area: ADAS logs, CAN traces, BMS data, Android logs, etc.
+      </li>
+      <li>
+        Comfort reading technical specs / standards and turning them into structured rules / checks.
+      </li>
+      <li>
+        Mindset to ship small, high-quality tools fast rather than big “perfect” platforms.
+      </li>
+    </ul>
+  </div>
+
+  <p class="career-footer-note">
+    <strong>How to apply:</strong> Send a short mail with links (GitHub / sample scripts / tools or portals you’ve built)
+    and a few lines on your favourite automotive or web+AI problem to
+    <span class="contact-email">careers@ZYFNYXautolabs.com</span>
+  </p>
+</article>
+
+
+        <!-- AI Solution Tester -->
+        <article class="career-card">
+          <h3 class="career-title">AI Solution Tester</h3>
+          <p class="career-tagline">
+            Own the quality of AI-driven tools – from test design and data selection to edge-case
+            hunting across ADAS, E&amp;E and EV analytics.
+          </p>
+          <div class="career-meta-row">
+            <span class="career-meta-pill">Experience: 3–8 years</span>
+            <span class="career-meta-pill">Location: Bengaluru / Hybrid</span>
+            <span class="career-meta-pill">Type: Full-time</span>
+          </div>
+
+          <div>
+            <div class="career-subtitle">You will</div>
+            <ul class="career-list">
+              <li>Design test strategies for AI tools: from unit-level checks to end-to-end scenario tests.</li>
+              <li>Curate and prepare data sets (logs, traces, specs) to validate AI outputs and edge cases.</li>
+              <li>Define KPIs and acceptance criteria for ADAS BM tools, compliance copilots and analytics portals.</li>
+              <li>Recreate real-world issues from OEM / Tier-1 feedback and convert them into regression suites.</li>
+              <li>Work closely with the AI Solution Programmer to tune robustness, latency and usability.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="career-subtitle">You bring</div>
+            <ul class="career-list">
+              <li>Experience testing automotive, embedded, ADAS, IVI or analytics platforms.</li>
+              <li>Comfort working with logs (CAN, LIN, Ethernet, BMS, app logs) and basic scripting (Python preferred).</li>
+              <li>Ability to write clear test cases, bug reports and “what if” scenarios that map to standards / KPIs.</li>
+              <li>Exposure to AIS / NCAP / ISO / OEM test methodologies is a strong plus.</li>
+              <li>Curiosity to challenge AI outputs, not just check if the UI “works”.</li>
+            </ul>
+          </div>
+
+          <p class="career-footer-note">
+            <strong>How to apply:</strong> Share a brief profile with examples of test strategies, checklists
+            or tools you’ve used / built, and a note on what you’d like to test at ZYFNYX AutoLabs – to
+            <span class="contact-email">careers@ZYFNYXautolabs.com</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CALL TO ACTION -->
+  <section id="contact" class="section contact-section">
+    <div class="section-inner">
+      <div class="section-title-bar">
+        <span class="line"></span>
+        <span class="label">Engage</span>
+      </div>
+      <h2 class="section-heading">Let’s scope your next automotive experiment</h2>
+      <p class="section-lead">
+        A short context note is enough to start – we can then shape a focused benchmarking,
+        PoC or AI-tool package aligned to your programmes and milestones.
+      </p>
+
+      <div class="contact-band">
+        <div>
+          <div class="contact-text-main">Send a brief on your programme</div>
+          <div class="contact-text-sub">
+            Example: “ADAS log analysis &amp; coverage view for FY26 SUV”, or
+            “E&amp;E benchmarking + VAVE options for an India-first sub-4m product”.
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--cement-dim); margin-bottom:0.2rem;">
+            Direct line
+          </div>
+          <div class="contact-email">contact@ZYFNYXautolabs.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-title">ZYFNYX AutoLabs</div>
+        <div class="footer-brand-line">
+          A boutique automotive lab focused on data-driven benchmarking, AI-assisted compliance,
+          and PoC storytelling across ADAS, E&amp;E, cockpits and EV ecosystems.
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#joinus">Join us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Focus themes</div>
+        <ul class="footer-links">
+          <li>Sub-4m SUV &amp; crossover programmes</li>
+          <li>ADAS &amp; CDAS-aligned validation</li>
+          <li>Android cockpits &amp; Panic Mode PoCs</li>
+          <li>EV battery &amp; motor analytics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ZYFNYX AutoLabs. All rights reserved.</span>
+      <span>SYSTEM STATUS: NOMINAL // BUILT FOR NEXT-GEN AUTOMOTIVE TEAMS</span>
+    </div>
+  </footer>
+
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 3D tilt effect on each suite band
+    const suites = document.querySelectorAll('.suite-section');
+
+    suites.forEach(suite => {
+      suite.addEventListener('mousemove', (e) => {
+        const rect = suite.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const xRotation = -1 * ((y - rect.height / 2) / 30);
+        const yRotation = (x - rect.width / 2) / 30;
+
+        suite.style.transform =
+          `perspective(1200px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(-4px)`;
+      });
+
+      suite.addEventListener('mouseleave', () => {
+        suite.style.transform =
+          'perspective(1200px) rotateX(0) rotateY(0) translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
