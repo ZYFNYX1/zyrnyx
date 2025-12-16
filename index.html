@@ -1242,6 +1242,43 @@
         align-items: flex-start;
       }
     }
+    /* Suite 05 – HMI Test Automation (Robot + AI) */
+  .suite-hmi {
+    background: linear-gradient(120deg, #020617 0%, #111827 40%, #0b3b4a 100%);
+    border-image: linear-gradient(90deg, var(--neo-cyan), var(--neo-pink)) 1;
+  }
+
+  /* Suite 06 – EV Charger Testing (ISO 15118) */
+  .suite-evse {
+    background: linear-gradient(120deg, #020617 0%, #0f172a 45%, #064e3b 100%);
+    border-image: linear-gradient(90deg, var(--neo-lime), var(--neo-cyan)) 1;
+  }
+
+    /* Suite 07 – FOTA / OTA Test Suite */
+    .suite-fota {
+      background: linear-gradient(120deg, #020617 0%, #111827 40%, #4c1d95 100%);
+      border-image: linear-gradient(90deg, var(--neo-violet), var(--neo-cyan)) 1;
+    }
+
+/* Suite 08 – Cybersecurity Readiness (UNECE R155 / ISO 21434) */
+.suite-cyber {
+  background: linear-gradient(120deg, #020617 0%, #111827 40%, #7f1d1d 100%);
+  border-image: linear-gradient(90deg, var(--neo-pink), var(--neo-cyan)) 1;
+}
+
+/* Suite 09 – SUMS / UNECE R156 Compliance Manager */
+.suite-sums {
+  background: linear-gradient(120deg, #020617 0%, #111827 40%, #7c2d12 100%);
+  border-image: linear-gradient(90deg, var(--neo-amber), var(--neo-cyan)) 1;
+}
+
+/* Suite 10 – Diagnostics & UDS Test Suite */
+.suite-diag {
+  background: linear-gradient(120deg, #020617 0%, #0f172a 45%, #1d4ed8 100%);
+  border-image: linear-gradient(90deg, var(--neo-cyan), var(--neo-amber)) 1;
+}
+
+
   </style>
 </head>
 <body>
@@ -1802,9 +1839,755 @@
           </div>
         </div>
       </section>
+
+      <!-- Suite 05 – HMI Test Automation (Robot Framework + AI) -->
+<section class="suite-section suite-hmi">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            HMI TEST AUTOMATION ORBIT
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Coverage</span>
+              <span class="value">IVI • Cluster • Companion</span>
+            </div>
+            <div class="suite-metric">
+              <span>Framework</span>
+              <span class="value">Robot • Appium • Python</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Focus</span>
+            <span class="value">Regression • Stability</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Self-heal • Triage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 05 • HMI Test Automation (Robot Framework + AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">Robot Framework</span>
+          <span class="suite-tag">Appium / UIAutomator</span>
+          <span class="suite-tag">AAOS / Android IVI</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Ship stable HMI releases with AI-augmented automation.</span>
+        <span class="index">05</span>
+      </div>
+
+      <p class="suite-desc">
+        A Robot Framework based automation stack for IVI / Cluster / companion-app flows — enhanced with AI
+        for smarter test generation, flake reduction, visual assertions and fast root-cause triage.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>Robot Framework HMI Automation Library</strong> – reusable keywords for HMI navigation,
+            media, phone, settings, projection, tell-tales and localization checks.
+          </li>
+          <li>
+            <strong>AI Test Case Generator</strong> – convert requirements / user stories into Robot test
+            skeletons + keyword suggestions, including boundary and negative flows.
+          </li>
+          <li>
+            <strong>AI Visual Assertions</strong> – screenshot-based UI verification (layout, icons,
+            text/tell-tales) with tolerance rules and change-detection.
+          </li>
+          <li>
+            <strong>Self-healing Locators</strong> – AI-assisted selector fallback when UI IDs/paths change,
+            reducing maintenance overhead.
+          </li>
+          <li>
+            <strong>Log + Failure Triage Copilot</strong> – auto-cluster failures, extract probable causes
+            (ANR/CR, missing CAN triggers, timing issues) and generate defect-ready summaries.
+          </li>
+          <li>
+            <strong>CI/CD Regression Gate</strong> – nightly + on-merge suites with stability scoring,
+            flake tracking and test prioritization.
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            HMI QA, IVI engineers, automation leads, release managers.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            APK/builds, UX flows, HMI spec, screenshots, device logs, CAN triggers.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            Robot suites, keyword libs, dashboards, defect packs, CI reports.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Works for physical rigs, emulators and bench setups; scales to multiple SKUs.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> HMI regression, release readiness, stability campaigns, projection validation.</span>
+        <a href="#contact">Discuss HMI automation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Suite 06 – EV Charger Testing Protocol (ISO 15118) -->
+<section class="suite-section suite-evse">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            EV CHARGER (EVSE) TEST ORBIT
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Protocols</span>
+              <span class="value">ISO 15118 • DIN 70121</span>
+            </div>
+            <div class="suite-metric">
+              <span>Charging</span>
+              <span class="value">AC • DC • HPC</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Security</span>
+            <span class="value">TLS • Certs • PnC</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Triage • Coverage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 06 • EV Charger Testing Protocol (ISO 15118 + AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">ISO 15118-2 / 15118-20</span>
+          <span class="suite-tag">TLS / PKI / Plug &amp; Charge</span>
+          <span class="suite-tag">Interoperability</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Decision-grade EVSE validation — conformance + interoperability.</span>
+        <span class="index">06</span>
+      </div>
+
+      <p class="suite-desc">
+        A full EVSE / charger validation protocol aligned to ISO 15118 messaging, security and session behaviour —
+        plus AI-assisted log interpretation and gap discovery to accelerate certification readiness and field stability.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>Session Protocol Coverage</strong> – structured checks for discovery/handshake,
+            authorization, charging parameter negotiation, power delivery, and session termination.
+          </li>
+          <li>
+            <strong>Plug &amp; Charge (PnC) Readiness</strong> – certificate install/rotation paths, contract
+            cert flows, TLS handshake validation, error paths and rollback behaviours.
+          </li>
+          <li>
+            <strong>AC &amp; DC Charging Test Packs</strong> – supported energy transfer modes, limits and
+            state transitions; negative cases and recovery behaviours.
+          </li>
+          <li>
+            <strong>Interoperability Matrix</strong> – EVCC/SECC cross-tests (different OEM EVs / simulators),
+            charger firmware variants, backend dependencies and known-issue tracking.
+          </li>
+          <li>
+            <strong>Network / Timing / Robustness</strong> – timeouts, retries, message ordering, partial
+            connectivity loss, jitter, and regression gates for firmware updates.
+          </li>
+          <li>
+            <strong>AI Log Triage Copilot</strong> – parse V2G message traces, flag likely root causes (TLS,
+            cert chain, negotiation mismatch, state machine errors) and generate defect-ready summaries.
+          </li>
+          <li>
+            <strong>AI Coverage Analyzer</strong> – maps captured traces to a scenario catalogue and highlights
+            missing paths (error handling, corner cases, uncommon parameter sets).
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            EVSE engineering, validation, security/PKI teams, charger QA, field reliability.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            SECC logs/traces, charger config, certs (test), EV/EVCC simulator runs, session KPIs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            Protocol test plan, scenario suites, pass/fail dashboards, evidence packs, defect reports.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Works with lab benches + real chargers; supports regression across charger firmware releases.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> ISO 15118 readiness, PnC interoperability, charger firmware release gates.</span>
+        <a href="#contact">Discuss ISO 15118 testing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Suite 07 – FOTA / OTA Test Suite (Security + Robustness + Compliance-ready) -->
+<section class="suite-section suite-fota">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            FOTA / OTA VALIDATION ORBIT
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Update types</span>
+              <span class="value">Full • Delta • A/B</span>
+            </div>
+            <div class="suite-metric">
+              <span>Targets</span>
+              <span class="value">ECU • IVI • TCU</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Focus</span>
+            <span class="value">Integrity • Rollback</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Triage • Coverage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 07 • FOTA / OTA Test Suite (Security + Robustness + AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">Campaigns • Rollback</span>
+          <span class="suite-tag">Crypto • Signing</span>
+          <span class="suite-tag">Evidence Packs</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Make every OTA safe, auditable and repeatable.</span>
+        <span class="index">07</span>
+      </div>
+
+      <p class="suite-desc">
+        A structured OTA validation suite covering package integrity, download/install robustness,
+        rollback safety, diagnostics, and campaign governance — enhanced with AI for faster failure triage
+        and scenario coverage analytics.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>Update Package Integrity</strong> – signature verification, hash checks, version rules,
+            anti-rollback counters, manifest validation, dependency checks.
+          </li>
+          <li>
+            <strong>Download &amp; Transport Robustness</strong> – Wi-Fi/LTE drop, partial downloads, resume,
+            throttling, proxy/firewall behaviour, CDN failover (where applicable).
+          </li>
+          <li>
+            <strong>Install &amp; Reboot Safety</strong> – power-loss mid-install, ignition cycles, low battery,
+            safe state gating, user prompts and “do-not-disturb while driving” behaviour.
+          </li>
+          <li>
+            <strong>A/B &amp; Rollback Validation</strong> – failover to previous slot, boot success criteria,
+            rollback triggers, data persistence, app/ECU state recovery.
+          </li>
+          <li>
+            <strong>ECU Update Orchestration</strong> – multi-ECU sequencing, prerequisite enforcement,
+            network load/latency constraints, partial fleet rollout handling.
+          </li>
+          <li>
+            <strong>Diagnostics &amp; Logging</strong> – event logs, DTCs, traceability from campaign → vehicle → ECU,
+            “why failed” codes, evidence pack generation.
+          </li>
+          <li>
+            <strong>Security / Abuse Cases</strong> – tampered packages, replay attempts, invalid certs,
+            man-in-the-middle simulation, unauthorized triggers, downgrade blocks.
+          </li>
+          <li>
+            <strong>AI Failure Triage Copilot</strong> – auto-summarize OTA failures from logs (download/install/boot),
+            cluster root causes, suggest next checks and generate defect-ready reports.
+          </li>
+          <li>
+            <strong>AI Coverage Analyzer</strong> – map executed runs to a scenario catalogue and highlight missing
+            paths (rollback, power-cut windows, rare dependency combos).
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            OTA platform teams, validation, cybersecurity, release &amp; quality owners.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            Update packages, manifests, keys/certs (test), backend configs, vehicle/bench logs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            Test suites, dashboards, stability KPIs, rollback proof, evidence packs &amp; defect reports.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Supports lab benches + pilot fleets; ideal for regression across OTA platform releases.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> OTA release gates, pilot rollouts, cybersecurity reviews, fleet stability programs.</span>
+        <a href="#contact">Discuss FOTA validation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Suite 08 – Cybersecurity & UNECE R155 / ISO 21434 Readiness -->
+<section class="suite-section suite-cyber">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            CYBERSECURITY ORBIT – R155 / ISO 21434
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Standards</span>
+              <span class="value">UNECE R155 • ISO 21434</span>
+            </div>
+            <div class="suite-metric">
+              <span>Scope</span>
+              <span class="value">CSMS • TARA • Testing</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Focus</span>
+            <span class="value">Evidence • Risk closure</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Triage • Gap checks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 08 • Cybersecurity Readiness (R155 / ISO 21434 + AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">CSMS / Governance</span>
+          <span class="suite-tag">Threat Modeling (TARA)</span>
+          <span class="suite-tag">Evidence Packs</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Move from “security intent” to audit-ready work products.</span>
+        <span class="index">08</span>
+      </div>
+
+      <p class="suite-desc">
+        A practical cybersecurity readiness package aligned to UNECE R155 and ISO/SAE 21434 — building
+        structured work products, test plans and traceable evidence that OEM teams can use for reviews,
+        supplier alignment and program gates. AI adds faster triage, coverage insight and completeness checks.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>CSMS Baseline &amp; R155 Mapping</strong> – governance checklist, process evidence map,
+            roles/responsibilities, audit trail structure and “what proof is needed” guidance.
+          </li>
+          <li>
+            <strong>Threat Modeling &amp; TARA Workbench</strong> – assets, attack paths, feasibility/impact scoring,
+            cybersecurity goals and risk treatment plans linked to features/ECUs.
+          </li>
+          <li>
+            <strong>Security Requirements &amp; Architecture Review</strong> – secure boot &amp; key management posture,
+            diagnostic security, comms security, access control, logging strategy and secure update hooks.
+          </li>
+          <li>
+            <strong>Security Testing Protocol</strong> – penetration test plan, fuzzing targets (protocols/APIs),
+            SAST/secret scanning, dependency checks, SBOM-based scanning and negative-case suites.
+          </li>
+          <li>
+            <strong>Vulnerability Management (Ops-ready)</strong> – triage flow, severity rules, patch policy,
+            supplier intake, CVE watchlists and release gating recommendations.
+          </li>
+          <li>
+            <strong>Incident Response &amp; Monitoring</strong> – event taxonomy, logging coverage, alert triggers,
+            forensic data needs and “how we know it happened” evidence patterns.
+          </li>
+          <li>
+            <strong>AI Security Triage Copilot</strong> – cluster security test failures/log anomalies, suggest likely
+            root causes (auth failures, replay patterns, cert issues, insecure endpoints) and generate defect-ready summaries.
+          </li>
+          <li>
+            <strong>AI Evidence Completeness Checker</strong> – scans your work products (TARA, requirements, tests,
+            results) and flags missing links, weak justifications, and unclosed risks.
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            Cybersecurity leads, E&amp;E architects, validation, quality &amp; compliance owners.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            ECU list/topology, feature list, interfaces (CAN/DoIP/Ethernet/APIs), logs, update flows, supplier docs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            TARA packs, security requirements, test protocols, evidence matrix, gap register &amp; closure plan.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Integrates well with Suite 07 (FOTA/OTA) and Suite 06 (ISO 15118) for security-by-design coverage.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> R155 readiness reviews, supplier alignment, cybersecurity gates, audit-style evidence pack creation.</span>
+        <a href="#contact">Discuss R155 / ISO 21434 readiness</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Suite 09 – SUMS / UNECE R156 Compliance Manager (Software Updates Governance + AI) -->
+<section class="suite-section suite-sums">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            SOFTWARE UPDATES ORBIT – SUMS / R156
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Standards</span>
+              <span class="value">UNECE R156 • SUMS</span>
+            </div>
+            <div class="suite-metric">
+              <span>Artifacts</span>
+              <span class="value">Audit • Evidence • Trace</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Focus</span>
+            <span class="value">Govern • Release • Prove</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Impact • Completeness</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 09 • SUMS / UNECE R156 Compliance Manager (+ AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">Update Governance</span>
+          <span class="suite-tag">Type-approval evidence</span>
+          <span class="suite-tag">Fleet rollout control</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Turn OTA into a controlled, auditable engineering system.</span>
+        <span class="index">09</span>
+      </div>
+
+      <p class="suite-desc">
+        A governance + evidence platform for software updates — mapping your update process to R156-ready
+        work products: inventory, approvals, risk checks, release gates, rollback proof and post-deployment monitoring.
+        AI accelerates impact analysis, evidence completeness checks and defect-ready summaries.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>SUMS Blueprint</strong> – roles, approvals, change control, release gates, and “what must be recorded”
+            for each update (from build → campaign → fleet).
+          </li>
+          <li>
+            <strong>Software Inventory &amp; Configuration Baselines</strong> – ECU/app/software version catalog,
+            variants/SKUs, dependencies, and “what is installed on which vehicle” traceability.
+          </li>
+          <li>
+            <strong>Campaign Orchestration</strong> – staged rollouts, eligibility rules, prerequisites, pausing/resuming,
+            and controlled recovery / rollback handling.
+          </li>
+          <li>
+            <strong>Release Evidence Pack Generator</strong> – auto-build evidence bundles: test results, checksums,
+            approval trails, release notes, and “safety/cyber impacts considered” statements.
+          </li>
+          <li>
+            <strong>Quality Gates &amp; Post-Update Monitoring</strong> – success KPIs, failure codes taxonomy,
+            telemetry signals, warranty/watchlist triggers and regression dashboards.
+          </li>
+          <li>
+            <strong>Supplier &amp; Component Intake</strong> – structured update intake from Tier-1/Tier-2,
+            dependency checks, validation scope tagging and documentation completeness checks.
+          </li>
+          <li>
+            <strong>AI Change Impact Assistant</strong> – highlights likely affected ECUs/features/tests based on
+            “what changed”, dependencies and historical defect patterns.
+          </li>
+          <li>
+            <strong>AI Evidence Completeness Checker</strong> – flags missing approvals, weak trace links,
+            missing test coverage, and incomplete rollout monitoring before release.
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            OTA program owners, release managers, quality/compliance, platform leads, supplier managers.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            Builds/packages, ECU/app inventory, approvals, test reports, rollout data, failure logs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            R156-style evidence packs, campaign dashboards, audit trails, risk/gap register, rollout KPIs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Naturally connects with Suite 07 (FOTA) + Suite 08 (Cybersecurity) for end-to-end readiness.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> SUMS setup, OTA governance, audit readiness, safe fleet rollouts &amp; evidence automation.</span>
+        <a href="#contact">Discuss SUMS / R156 readiness</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Suite 10 – Diagnostics & UDS Test Suite (UDS/DoIP/OBD + AI) -->
+<section class="suite-section suite-diag">
+  <div class="suite-layout">
+    <div class="suite-visual">
+      <div class="suite-visual-grid"></div>
+      <div class="suite-visual-inner">
+        <div>
+          <div class="suite-orbit-title">
+            <span class="suite-orbit-dot"></span>
+            DIAGNOSTICS ORBIT – UDS / DoIP / OBD
+          </div>
+          <div class="suite-metrics-row">
+            <div class="suite-metric">
+              <span>Protocols</span>
+              <span class="value">UDS • CAN • DoIP</span>
+            </div>
+            <div class="suite-metric">
+              <span>Targets</span>
+              <span class="value">ECU • Gateway • IVI</span>
+            </div>
+          </div>
+        </div>
+        <div class="suite-metrics-row">
+          <div class="suite-metric">
+            <span>Focus</span>
+            <span class="value">Coverage • Robustness</span>
+          </div>
+          <div class="suite-metric">
+            <span>AI layer</span>
+            <span class="value">Trace triage • Gaps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-shape-circle"></div>
+      <div class="suite-shape-rect"></div>
+      <div class="suite-shape-triangle"></div>
+      <div class="suite-shape-arc"></div>
+    </div>
+
+    <div class="suite-content">
+      <div class="suite-kicker-row">
+        <div class="suite-kicker-label">Suite 10 • Diagnostics &amp; UDS Test Suite (+ AI)</div>
+        <div class="suite-kicker-tags">
+          <span class="suite-tag">ISO 14229 (UDS)</span>
+          <span class="suite-tag">CAN/CAN FD • DoIP</span>
+          <span class="suite-tag">DTC • OBD readiness</span>
+        </div>
+      </div>
+
+      <div class="suite-heading">
+        <span>Turn diagnostics into a measurable, regression-ready quality gate.</span>
+        <span class="index">10</span>
+      </div>
+
+      <p class="suite-desc">
+        A structured diagnostics validation pack covering UDS service compliance, DTC lifecycle correctness,
+        session/security behaviour, timing robustness and traceable evidence — enhanced with AI to interpret
+        traces, cluster failures and highlight missing coverage across ECUs and variants.
+      </p>
+
+      <div class="suite-columns">
+        <ul class="suite-list">
+          <li>
+            <strong>UDS Service Coverage</strong> – automated checks for key services: session control, ECU reset,
+            security access, read/write data, routines, DTC services, IO control, comm control, and download/programming.
+          </li>
+          <li>
+            <strong>DTC Lifecycle Validation</strong> – set/clear behaviour, healing logic, confirmation rules,
+            snapshot/freeze-frame availability, extended data correctness and event memory behaviour.
+          </li>
+          <li>
+            <strong>OBD / Emissions Diagnostics Readiness</strong> – readiness monitors behaviour, supported PID map
+            sanity, failure reporting discipline and regression hooks (where applicable to the platform/market).
+          </li>
+          <li>
+            <strong>Timing &amp; Robustness</strong> – P2/P2* handling, NRC correctness, retry/backoff strategy,
+            “busy” behaviours, reset recovery, ignition-cycle transitions and network load effects.
+          </li>
+          <li>
+            <strong>Security &amp; Access Control</strong> – session gating, seed/key flows, lockout policies,
+            downgrade prevention hooks and diagnostics role separation (service vs engineering modes).
+          </li>
+          <li>
+            <strong>DoIP / Ethernet Diagnostics</strong> – discovery/routing checks, gateway routing correctness,
+            multi-ECU addressing, connection resilience and regression across topology variants.
+          </li>
+          <li>
+            <strong>Flashing &amp; Programming Validation</strong> – download sequence integrity, block handling,
+            interruption tests (power/network), rollback/fail-safe behaviour and post-flash sanity checks.
+          </li>
+          <li>
+            <strong>AI Trace Triage Copilot</strong> – parses CAN/DoIP logs, pinpoints likely issues (NRC patterns,
+            timing violations, session drops, misrouted requests) and generates defect-ready summaries.
+          </li>
+          <li>
+            <strong>AI Coverage Analyzer</strong> – maps executed traces to a service/ECU matrix and flags missing
+            services, weak negative-case coverage and untested variants.
+          </li>
+        </ul>
+
+        <div class="suite-micro-grid">
+          <div class="suite-micro-card">
+            <strong>Primary users</strong>
+            Diagnostics leads, ECU owners, validation, plant/service tools teams, gateways/network teams.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Inputs</strong>
+            ECU list + addressing, dbc/arxml (optional), diagnostic spec, logs/traces, service tool scripts.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Outputs</strong>
+            UDS test suites, ECU coverage matrix, DTC audit reports, timing compliance report, evidence packs.
+          </div>
+          <div class="suite-micro-card">
+            <strong>Extra</strong>
+            Pairs perfectly with Suite 07 (FOTA) for post-update health checks and Suite 09 (SUMS) for audit evidence.
+          </div>
+        </div>
+      </div>
+
+      <div class="suite-footer-row">
+        <span><strong>Ideal for:</strong> ECU integration, service readiness, gateway bring-up, release regression, post-OTA validation.</span>
+        <a href="#contact">Discuss UDS diagnostics testing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
     </div>
   </section>
 
+  
   <!-- TECHNOLOGIES -->
   <section id="technologies" class="section tech-section">
     <div class="section-inner">
@@ -1873,8 +2656,23 @@
             <span class="tech-tag">Jupyter</span>
           </div>
         </div>
+
+        <div class="tech-card">
+  <span class="tech-name">HMI test automation</span>
+  <span>Robot Framework based keyword-driven automation for IVI/Cluster/HMI flows.</span>
+  <div class="tech-tag-row">
+    <span class="tech-tag">Robot Framework</span>
+    <span class="tech-tag">Appium</span>
+    <span class="tech-tag">Android / IVI</span>
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">CI/CD</span>
+  </div>
+</div>
+
+
       </div>
     </div>
+    
   </section>
 
   <!-- TESTIMONIALS -->
@@ -1953,7 +2751,6 @@
       </p>
 
       <div class="career-grid">
-        <!-- AI Solution Programmer -->
  <!-- AI Solution Programmer -->
 <article class="career-card">
   <h3 class="career-title">AI Solution Programmer</h3>
@@ -2058,6 +2855,8 @@
       </div>
     </div>
   </section>
+
+  
 
   <!-- CONTACT / CALL TO ACTION -->
   <section id="contact" class="section contact-section">
